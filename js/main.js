@@ -121,7 +121,7 @@ const mySwiper = new Swiper('.slider-2', {
   },
 
   on: {
-    init: function () {
+    init: function() {
       this.slides.forEach((slide) => {
         if (!slide.classList.contains("slide-visible")) {
           slide.tabIndex = "-1";
@@ -130,7 +130,7 @@ const mySwiper = new Swiper('.slider-2', {
         }
       });
     },
-    slideChange: function () {
+    slideChange: function() {
       this.slides.forEach((slide) => {
         if (!slide.classList.contains("slide-visible")) {
           slide.tabIndex = "-1";
@@ -306,10 +306,15 @@ function init() {
     iconLayout: 'default#image',
     iconImageHref: 'images/location.svg',
     iconImageSize: [20, 20],
-    iconImageOffset: [-2, -20]
+    iconImageOffset: [-2, -20],
+
   });
 
   myMap.geoObjects.add(myPlacemark);
+  myMap.behaviors.disable('scrollZoom');
+  myMap.controls.add('zoomControl', {
+    float: 'right'
+  });
 }
 
 
@@ -425,5 +430,4 @@ function setTabindexSearchHeader() {
 
 window.onresize = setTabindexSearchHeader();
 
-window.innerWidth <= 768 ? setTabIndex(searchItems, -1, true) : setTabIndex(searchItems, 0, false);
-;
+window.innerWidth <= 768 ? setTabIndex(searchItems, -1, true) : setTabIndex(searchItems, 0, false);;
